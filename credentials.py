@@ -1,3 +1,4 @@
+import random
 from user import User
 class Credentials:
     '''
@@ -26,6 +27,13 @@ class Credentials:
         '''
 
         Credentials.credentials_list.append(self)
+
+    def generate_loginkey(size=8, char = str.uppercase + str.lowercase + str.digits):
+        '''
+        Function to generate an 8 character password
+        '''
+        log_pass=''.join(random.choice(char) for _ in range(size))
+        return log_pass
 
 
     @classmethod

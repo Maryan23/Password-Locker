@@ -34,6 +34,13 @@ def create_credentials(accountname,loginkey):
     new_credentials = Credentials(accountname,loginkey)
     return new_credentials
 
+def generate_loginkey():
+    '''
+    Function that generates a loginkey
+    '''
+    log_pass = Credentials.generate_loginkey()
+    return log_pass
+
 def save_credentials(credentials):
     '''
     Function to save credentials
@@ -122,10 +129,27 @@ def main():
             print("Enter Account name")
             a_name = input()
 
-            print("Enter Login-key")
-            l_key = input()
+            while True:
+                print("Please use the shortcodes to choose login key option:'el'to enter login key, 'gl' for a system generated login key,'ex' to exit the prompt")
+                l_key = input().lower()
+                print("\n")
+                if l_key == 'el':
+                    print("Enter login key")
+                    log_key = input()
 
-            save_credentials(create_credentials(a_name,l_key)) #creates and saves new credentials
+                elif l_key == 'gl':
+                    log_key = generate_loginkey()
+                    break
+
+                elif l_key == 'ex':
+                    break
+
+                else:
+                    print("Please check your input!")
+
+
+
+            save_credentials(create_credentials(a_name,log_key)) #creates and saves new credentials
             print(f"New credentials for {a_name} have been created!")
 
         elif short_code == 'fa':
