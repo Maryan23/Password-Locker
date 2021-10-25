@@ -66,7 +66,7 @@ def main():
     print('\n')
 
     while True:
-        print("Use these short codes 'lg': to Login to your account, 'sg' to sign-up and create an account,'du' to delete a user account,'dc' to display credentials, 'ex' to exit the application.")
+        print("Use these short codes 'lg': to Login to your account, 'sg' to sign-up and create an account,'fa' to find a user account,'du' to delete a user account,'dc' to display credentials, 'ex' to exit the application.")
         short_code = input().lower()
         print('\n')
         if short_code == 'sg':
@@ -118,6 +118,14 @@ def main():
             else:
                 print("Login success!:)")
 
+        elif short_code == 'fa':
+            print("Enter username to search")
+            uname = input()
+            if find_user(uname):
+                search_name = find_user(uname)
+                print(f"{search_name.username}")
+
+
         elif short_code == 'dc':
             if display_credentials():
                 print("Find a list of your credentials below")
@@ -135,7 +143,7 @@ def main():
             break
 
         else:
-            print("Enter valid to continue!")
+            print("Enter valid short code to continue!")
 
 if __name__ == "__main__":
     main()
