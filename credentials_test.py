@@ -45,15 +45,6 @@ class TestCredentials(unittest.TestCase):
             test_credentials.save_credentials()
             self.assertEqual(len(Credentials.credentials_list),2)
 
-    # def test_generate_loginkey(self):
-    #     '''
-    #     test_generate_loginkey
-    #     '''
-    #     self.new_credentials.save_credentials()
-    #     test_credentials = Credentials("New","key") #new credentials
-    #     test_credentials.save_credentials()
-    #     self.assertEqual(len(Credentials.credentials_list))
-
     def test_find_credentials_by_name(self):
         '''
         test to check if we can find Credentials by accountname and display information

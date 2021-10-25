@@ -1,4 +1,4 @@
-import random
+import random, string
 from user import User
 from credentials import Credentials
 
@@ -38,8 +38,18 @@ def generate_loginkey():
     '''
     Function that generates a loginkey
     '''
-    log_pass = Credentials.generate_loginkey()
-    return log_pass
+    phrase = phrase = string.digits + string.ascii_lowercase + string.ascii_uppercase
+    while True:
+        try:
+            length = int(input('Enter length of loginkey!'))
+            loginkey = random.sample(phrase, length)
+
+        except ValueError:
+            print("Please enter a valid number!")
+            continue
+        else:
+            loginkey = ("".join(loginkey))
+            return loginkey
 
 def save_credentials(credentials):
     '''
@@ -57,7 +67,7 @@ def find_credentials(aname):
     '''
     Function that finds credentials by accountname and returns the credential
     '''
-    return aname.find_by_name(aname)
+    return Credentials.find_by_name(aname)
 
 def display_credentials():
     '''
@@ -73,7 +83,7 @@ def main():
     print('\n')
 
     while True:
-        print("Use these short codes 'lg': to Login to your account, 'sg' to sign-up and create an account,'fa' to find a user account,'cc' to create new credentials,'du' to delete a credentials,'dc' to display credentials, 'ex' to exit the application.")
+        print("Use these short codes 'lg': to Login to your account, 'sg' to sign-up and create an account,'fa' to find a user account,'cc' to create new credentials,'du' to delete a user credentials,'dc' to display credentials, 'ex' to exit the application.")
         short_code = input().lower()
         print('\n')
         if short_code == 'sg':
@@ -174,6 +184,13 @@ def main():
 
             else:
                 print ("You dont have any saved credentials yet!")
+
+        elif short_code == 'du':
+            print("Enter account name you wish to delete")
+            accountname = input()
+            account = find_credentials(accountname)
+            del_credentials(account)
+
 
 
         elif short_code == 'ex':
