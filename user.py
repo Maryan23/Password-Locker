@@ -45,7 +45,7 @@ class User:
         Args:
             name: User name to search for
         Returns :
-            Name of person that matches the number.
+            Name of person that matches the name.
         '''
 
         for user in cls.user_list:
