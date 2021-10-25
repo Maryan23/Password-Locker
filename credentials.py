@@ -51,5 +51,12 @@ class Credentials:
 
         Credentials.credentials_list.remove(self)
 
+    @classmethod
+    def display_credentials(cls):
+        '''
+        method that returns the credentials list
+        '''
+        return cls.credentials_list
+
 new_credentials = Credentials('Facebook -',' Angela22')
 new_credentials.newCredentials()
