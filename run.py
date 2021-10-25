@@ -2,71 +2,71 @@ import random
 from user import User
 from credentials import Credentials
 
-# def create_user(username,password):
-#     '''
-#     Function to create a new user
-#     '''
-#     new_user = User(username,password)
-#     return new_user
+def create_user(username,password):
+    '''
+    Function to create a new user
+    '''
+    new_user = User(username,password)
+    return new_user
 
-# def save_user(user):
-#     '''
-#     Function to save user
-#     '''
-#     user.save_user()
+def save_user(user):
+    '''
+    Function to save user
+    '''
+    user.save_user()
 
-# def del_user(user):
-#     '''
-#     Function to delete a user
-#     '''
-#     user.delete_user()
+def del_user(user):
+    '''
+    Function to delete a user
+    '''
+    user.delete_user()
 
-# def find_user(name):
-#     '''
-#     Function that finds a user by name and returns the user
-#     '''
-#     return name.find_by_name(name)
+def find_user(uname):
+    '''
+    Function that finds a user by name and returns the user
+    '''
+    return uname.find_by_name(uname)
 
-# def create_credentials(accountname,loginkey):
-#     '''
-#     Function to create new credentials
-#     '''
-#     new_credentials = Credentials(accountname,loginkey)
-#     return new_credentials
+def create_credentials(accountname,loginkey):
+    '''
+    Function to create new credentials
+    '''
+    new_credentials = Credentials(accountname,loginkey)
+    return new_credentials
 
-# def save_credentials(credentials):
-#     '''
-#     Function to save credentials
-#     '''
-#     credentials.save_credentials()
+def save_credentials(credentials):
+    '''
+    Function to save credentials
+    '''
+    credentials.save_credentials()
 
-# def del_credentials(credentials):
-#     '''
-#     Function to delete credentials
-#     '''
-#     credentials.delete_credentials()
+def del_credentials(credentials):
+    '''
+    Function to delete credentials
+    '''
+    credentials.delete_credentials()
 
-# def find_credentials(name):
-#     '''
-#     Function that finds credentials by accountname and returns the credential
-#     '''
-#     return name.find_by_name(name)
+def find_credentials(aname):
+    '''
+    Function that finds credentials by accountname and returns the credential
+    '''
+    return aname.find_by_name(aname)
 
-# def display_credentials():
-#     '''
-#     Function that returns all the saved credentials
-#     '''
-#     return Credentials.display_credentials()
+def display_credentials():
+    '''
+    Function that returns all the saved credentials
+    '''
+    return Credentials.display_credentials()
 
 def main():
-    print('Hello! Welcome to Password Locker')
+    print('Hello! Welcome to Password Locker.')
     print('\n')
 
-    print('What would you like to do? Login or SignUp')
+    print('What would you like to do? Find ways to navigate around below.')
     print('\n')
 
     while True:
-        print("Use these short codes 'lg': to Login to your account, 'sg' to sign-up and create an account")
+        print("Use these short codes 'lg': to Login to your account, 'sg' to sign-up and create an account,'du' to delete a user account,'dc' to display credentials, 'ex' to exit the application.")
         short_code = input().lower()
         print('\n')
         if short_code == 'sg':
@@ -117,6 +117,22 @@ def main():
                 
             else:
                 print("Login success!:)")
+
+        elif short_code == 'dc':
+            if display_credentials():
+                print("Find a list of your credentials below")
+                print('\n')
+                
+                for credentials in display_credentials():
+                    print(f"{credentials.accountname} {credentials.password}")
+                    print("\n")
+
+            else:
+                print ("You dont have any saved credentials yet!")
+
+
+        elif short_code == 'ex':
+            break
 
         else:
             print("Enter valid to continue!")
