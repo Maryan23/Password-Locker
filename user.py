@@ -20,5 +20,14 @@ class User:
     def newUser(self):
         print ('My user details are '+ self.username + self.password)
 
+
+    def create_user(self):
+
+        '''
+        create user method saves user objects into users list
+        '''
+
+        User.user_list.append(self)
+
 new_user = User('Vodca ',' Angela22')
 new_user.newUser()
