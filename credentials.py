@@ -19,5 +19,5 @@ class Credentials:
     def newCredentials(self):
         print ('My credential details are '+ self.accountname + self.login_key)
 
-new_credentials = Credentials('Facebook',' Angela22')
+new_credentials = Credentials('Facebook -',' Angela22')
 new_credentials.newCredentials()
