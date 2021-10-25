@@ -52,5 +52,5 @@ class User:
             if user.username == name:
                 return user
 
-new_user = User('Vodca ',' Angela22')
-new_user.newUser()
+# new_user = User('Vodca ',' Angela22')
+# new_user.newUser()

@@ -58,5 +58,5 @@ class Credentials:
         '''
         return cls.credentials_list
 
-new_credentials = Credentials('Facebook -',' Angela22')
-new_credentials.newCredentials()
+# new_credentials = Credentials('Facebook -',' Angela22')
+# new_credentials.newCredentials()
