@@ -73,7 +73,7 @@ def main():
     print('\n')
 
     while True:
-        print("Use these short codes 'lg': to Login to your account, 'sg' to sign-up and create an account,'fa' to find a user account,'cc' to create new credentials,'du' to delete a user account,'dc' to display credentials, 'ex' to exit the application.")
+        print("Use these short codes 'lg': to Login to your account, 'sg' to sign-up and create an account,'fa' to find a user account,'cc' to create new credentials,'du' to delete a credentials,'dc' to display credentials, 'ex' to exit the application.")
         short_code = input().lower()
         print('\n')
         if short_code == 'sg':
