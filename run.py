@@ -1,4 +1,4 @@
-import random, string
+import random, string, pyperclip
 from user import User
 from credentials import Credentials
 
@@ -104,7 +104,7 @@ def main():
                             else:
                                 print(f"Welcome to your account {username}")
                                 while True:
-                                    print("Please choose an option to continue:'cc' to create new credentials,'du' to delete a user credentials,'dc' to display credentials, 'ex' to exit the application")
+                                    print("Please choose an option to continue:'cc' to create new credentials,'du' to delete account credentials,'dc' to display credentials,'cp' to copy credential details to clipboard, 'ex' to exit the application")
                                     short_code = input().lower()
                                     if short_code == 'cc':
                                         print("Enter Account Name")
@@ -126,7 +126,7 @@ def main():
                                                 print("Please check your input!")
 
                                         save_credentials(create_credentials(a_name,log_key)) #creates and saves new credentials
-                                        print(f"Credentials for {a_name} have been created and its password is {log_key}")
+                                        print(f"Credentials for {a_name} have been created and its login key is {log_key}")
 
                                     elif short_code == 'dc':
                                         if display_credentials():
@@ -136,6 +136,12 @@ def main():
                                                 print(f"{credentials.accountname} - {credentials.login_key}")
                                         else:
                                             print("You dont have any saved credentials yet!")
+
+                                    elif short_code == 'cp':
+                                        print("Enter account name whose credentials you want to copy!")
+                                        accountname = input()
+                                        account = find_credentials(accountname)
+                                        pyperclip.copy(account.accountname)
 
                                     elif short_code == 'du':
                                         print("Enter account name you wish to delete")
@@ -150,7 +156,7 @@ def main():
                                             print("It is sad to see you leave :(!")
                                             break
                                         elif answer == 'N':
-                                            print("Please choose an option to continue:'cc' to create new credentials,'du' to delete a user credentials,'dc' to display credentials, 'ex' to exit the application")
+                                            print("Please choose an option to continue:'cc' to create new credentials,'du' to delete account credentials,'dc' to display credentials,'cp' to copy credential details to clipboard, 'ex' to exit the application")
                                             short_code = input().lower()
                                         else:
                                             print("Choose a valid option!")
@@ -190,7 +196,7 @@ def main():
                                 print("Please check your input!")
                         save_credentials(create_credentials(a_name,log_key)) #creates and saves new credentials
 
-                        print(f"Credentials for {a_name} have been created and its password is {log_key}")
+                        print(f"Credentials for {a_name} have been created and its login key is {log_key}")
 
                     elif short_code == 'dc':
 
@@ -201,6 +207,12 @@ def main():
                                 print(f"{credentials.accountname} - {credentials.login_key}")
                         else:
                             print("You dont have any saved credentials yet!")
+
+                    elif short_code == 'cp':
+                            print("Enter account name whose credentials you want to copy!")
+                            accountname = input()
+                            account = find_credentials(accountname)
+                            pyperclip.copy(account.accountname)
 
                     elif short_code == 'du':
                             print("Enter account name you wish to delete")
