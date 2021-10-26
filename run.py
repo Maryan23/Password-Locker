@@ -59,59 +59,66 @@ def display_credentials():
 
 def main():
     print('Hello! Welcome to Password Locker.')
-    print('\n')
-
     print('What would you like to do? Find ways to navigate around below.')
     print('\n')
 
     while True:
-        print("Use these short codes 'lg' to Login to your account or 'sg' to Sign-up and create an account.")
+        print("lg => to Login to your account")
+        print("sg => to Sign-up and create an account.")
         short_code = input().lower()
         print('\n')
         if short_code == 'sg':
-                            print("Enter username")
+                            print("Enter UserName")
                             username = input()
 
-                            print ("Enter password")
+                            print ("Enter Password")
                             password = input()
                             
-                            print ("Confirm password")
+                            print ("Confirm Password")
                             confirm_password = input()
 
                             while confirm_password != password:
                                 print("Passwords did not match! Kindly try again")
-                                print("Enter password")
+                                print("Enter Password")
                                 password = input()
-                                print("Confirm password")
+                                print("Confirm Password")
                                 confirm_password = input()
                             else :
                                 print(f"Congratulations {username}! Your account was created successfully!")
                                 print('\n')
                                 print("Please proceed to login")
-                                print("Enter username")
+                                print("Enter Username")
                                 entered_username = input()
-                                print("Enter password")
+                                print("Enter Password")
                                 entered_password = input()
                             
                             while entered_username != username or entered_password != password:
                                 print("Invalid username or password")
 
-                                print("Enter your username")
+                                print("Enter your Username")
                                 entered_username = input()
-                                print("Enter your password")
+                                print("Enter your Password")
                                 entered_password = input()
 
                             else:
                                 print(f"Welcome to your account {username}")
                                 while True:
-                                    print("Please choose an option to continue:'cc' to create new credentials,'du' to delete account credentials,'dc' to display credentials,'cp' to copy credential details to clipboard, 'ex' to exit the application")
+                                    print("Please choose an option to continue")
+                                    print("cc => to create new credentials")
+                                    print("dc => to display credentials")
+                                    print("cp => to copy credential details to clipboard")
+                                    print("du => to delete account credentials")
+                                    print("ex => to exit the application")
                                     short_code = input().lower()
                                     if short_code == 'cc':
                                         print("Enter Account Name")
                                         a_name = input()
 
                                         while True:
-                                            print("Use the shortcodes to choose login key option:'el' to enter login key,'gl' for a system generated key,'ex' to exit the prompt")
+                                            print("Use the shortcodes to choose login key option")
+                                            print("el => to enter login key")
+                                            print("gl => for a system generated key")
+                                            print("ex => to exit the prompt")
                                             l_key = input().lower()
                                             print("\n")
                                             if l_key == 'el':
@@ -150,7 +157,8 @@ def main():
                                         del_credentials(account)
 
                                     elif short_code == 'ex':
-                                        print("Are you sure you want to leave?Y/N?")
+                                        print("Are you sure you want to leave?")
+                                        print("Y/N?")
                                         answer = input().upper()
                                         if answer == 'Y':
                                             print("It is sad to see you leave :(!")
@@ -163,9 +171,9 @@ def main():
 
                                     
         elif short_code == 'lg':
-            print("Enter username")
+            print("Enter Username")
             default_username = input()
-            print("Enter password")
+            print("Enter Password")
             default_password = input()
 
             while default_username != 'Vodca' or default_password != 'Angela22':
@@ -174,14 +182,22 @@ def main():
             else:
                 print("Login success!:)")
                 while True:
-                    print("Please choose an option to continue:'cc' to create new credentials,'du' to delete a user credentials,'dc' to display credentials, 'ex' to exit the application")
+                    print("Please choose an option to continue")
+                    print("cc => to create new credentials")
+                    print("dc => to display credentials")
+                    print("cp => to copy credential details to clipboard")
+                    print("du => to delete account credentials")
+                    print("ex => to exit the application")
                     short_code = input().lower()
                     if short_code == 'cc':
                         print("Enter Account Name")
                         a_name = input()
 
                         while True:
-                            print("Use the shortcodes to choose login key option:'el' to enter login key,'gl' for a system generated key,'ex' to exit the prompt")
+                            print("Use the shortcodes to choose login key option")
+                            print("el => to enter login key")
+                            print("gl => for a system generated key")
+                            print("ex => to exit the prompt")
                             l_key = input().lower()
                             print("\n")
                             if l_key == 'el':
@@ -221,7 +237,8 @@ def main():
                             del_credentials(account)
 
                     elif short_code == 'ex':
-                            print("Are you sure you want to leave?Y/N?")
+                            print("Are you sure you want to leave?")
+                            print("Y/N?")
                             answer = input().upper()
                             if answer == 'Y':
                                 print("It is sad to see you leave :(!")
