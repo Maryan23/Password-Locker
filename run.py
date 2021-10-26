@@ -9,24 +9,6 @@ def create_user(username,password):
     new_user = User(username,password)
     return new_user
 
-def save_user(user):
-    '''
-    Function to save user
-    '''
-    user.save_user()
-
-def del_user(user):
-    '''
-    Function to delete a user
-    '''
-    user.delete_user()
-
-def find_user(uname):
-    '''
-    Function that finds a user by name and returns the user
-    '''
-    return uname.find_by_name(uname)
-
 def create_credentials(accountname,loginkey):
     '''
     Function to create new credentials
@@ -83,7 +65,7 @@ def main():
     print('\n')
 
     while True:
-        print("Use these short codes 'lg': to Login to your account, 'sg' to sign-up and create an account,'fa' to find a user account,'cc' to create new credentials,'du' to delete a user credentials,'dc' to display credentials, 'ex' to exit the application.")
+        print("Use these short codes 'lg' to Login to your account or 'sg' to Sign-up and create an account.")
         short_code = input().lower()
         print('\n')
         if short_code == 'sg':
@@ -121,8 +103,59 @@ def main():
 
                             else:
                                 print(f"Welcome to your account {username}")
-                                
-        
+                                while True:
+                                    print("Please choose an option to continue:'cc' to create new credentials,'du' to delete a user credentials,'dc' to display credentials, 'ex' to exit the application")
+                                    short_code = input().lower()
+                                    if short_code == 'cc':
+                                        print("Enter Account Name")
+                                        a_name = input()
+
+                                        while True:
+                                            print("Use the shortcodes to choose login key option:'el' to enter login key,'gl' for a system generated key,'ex' to exit the prompt")
+                                            l_key = input().lower()
+                                            print("\n")
+                                            if l_key == 'el':
+                                                print("Enter login key")
+                                                log_key = input()
+                                            elif l_key == 'gl':
+                                                log_key = generate_loginkey()
+                                                break
+                                            elif l_key == 'ex':
+                                                break
+                                            else:
+                                                print("Please check your input!")
+
+                                        save_credentials(create_credentials(a_name,log_key)) #creates and saves new credentials
+                                        print(f"Credentials for {a_name} have been created and its password is {log_key}")
+
+                                    elif short_code == 'dc':
+                                        if display_credentials():
+                                            print("Find a list of your credentials below")
+                                            print("\n")
+                                            for credentials in display_credentials():
+                                                print(f"{credentials.accountname} - {credentials.login_key}")
+                                        else:
+                                            print("You dont have any saved credentials yet!")
+
+                                    elif short_code == 'du':
+                                        print("Enter account name you wish to delete")
+                                        accountname = input()
+                                        account = find_credentials(accountname)
+                                        del_credentials(account)
+
+                                    elif short_code == 'ex':
+                                        print("Are you sure you want to leave?Y/N?")
+                                        answer = input().upper()
+                                        if answer == 'Y':
+                                            print("It is sad to see you leave :(!")
+                                            break
+                                        elif answer == 'N':
+                                            print("Please choose an option to continue:'cc' to create new credentials,'du' to delete a user credentials,'dc' to display credentials, 'ex' to exit the application")
+                                            short_code = input().lower()
+                                        else:
+                                            print("Choose a valid option!")
+
+                                    
         elif short_code == 'lg':
             print("Enter username")
             default_username = input()
@@ -134,67 +167,58 @@ def main():
                 
             else:
                 print("Login success!:)")
+                while True:
+                    print("Please choose an option to continue:'cc' to create new credentials,'du' to delete a user credentials,'dc' to display credentials, 'ex' to exit the application")
+                    short_code = input().lower()
+                    if short_code == 'cc':
+                        print("Enter Account Name")
+                        a_name = input()
 
-        elif short_code == 'cc':
-            print("Enter Account name")
-            a_name = input()
+                        while True:
+                            print("Use the shortcodes to choose login key option:'el' to enter login key,'gl' for a system generated key,'ex' to exit the prompt")
+                            l_key = input().lower()
+                            print("\n")
+                            if l_key == 'el':
+                               print("Enter login key")
+                               log_key = input()
+                            elif l_key == 'gl':
+                                 log_key = generate_loginkey()
+                                 break
+                            elif l_key == 'ex':
+                                 break
+                            else:
+                                print("Please check your input!")
+                        save_credentials(create_credentials(a_name,log_key)) #creates and saves new credentials
 
-            while True:
-                print("Please use the shortcodes to choose login key option:'el'to enter login key, 'gl' for a system generated login key,'ex' to exit the prompt")
-                l_key = input().lower()
-                print("\n")
-                if l_key == 'el':
-                    print("Enter login key")
-                    log_key = input()
+                        print(f"Credentials for {a_name} have been created and its password is {log_key}")
 
-                elif l_key == 'gl':
-                    log_key = generate_loginkey()
-                    break
+                    elif short_code == 'dc':
 
-                elif l_key == 'ex':
-                    break
+                        if display_credentials():
+                            print("Find a list of your credentials below")
+                            print("\n")
+                            for credentials in display_credentials():
+                                print(f"{credentials.accountname} - {credentials.login_key}")
+                        else:
+                            print("You dont have any saved credentials yet!")
 
-                else:
-                    print("Please check your input!")
+                    elif short_code == 'du':
+                            print("Enter account name you wish to delete")
+                            accountname = input()
+                            account = find_credentials(accountname)
+                            del_credentials(account)
 
-
-
-            save_credentials(create_credentials(a_name,log_key)) #creates and saves new credentials
-            print(f"New credentials for {a_name} have been created!")
-
-        elif short_code == 'fa':
-            print("Enter username to search")
-            uname = input()
-            if find_user(uname):
-                search_name = find_user(uname)
-                print(f"{search_name.username}")
-
-            else:
-                print("That user does not exist!")
-
-
-        elif short_code == 'dc':
-            if display_credentials():
-                print("Find a list of your credentials below")
-                print('\n')
-                
-                for credentials in display_credentials():
-                    print(f"{credentials.accountname}-{credentials.login_key}")
-                    print("\n")
-
-            else:
-                print ("You dont have any saved credentials yet!")
-
-        elif short_code == 'du':
-            print("Enter account name you wish to delete")
-            accountname = input()
-            account = find_credentials(accountname)
-            del_credentials(account)
-
-
-
-        elif short_code == 'ex':
-            break
+                    elif short_code == 'ex':
+                            print("Are you sure you want to leave?Y/N?")
+                            answer = input().upper()
+                            if answer == 'Y':
+                                print("It is sad to see you leave :(!")
+                                break
+                            elif answer == 'N':
+                                print("Please choose an option to continue:'cc' to create new credentials,'du' to delete a user credentials,'dc' to display credentials, 'ex' to exit the application")
+                                short_code = input().lower()
+                            else:
+                                print("Choose a valid option!")
 
         else:
             print("Enter valid short code to continue!")
